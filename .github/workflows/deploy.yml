@@ -9,6 +9,7 @@ on:
 
   repository_dispatch:
     types: [trigger-workflow]
+  workflow_dispatch:  # Add this line to enable manual triggering
 
 permissions: write-all
 concurrency:
