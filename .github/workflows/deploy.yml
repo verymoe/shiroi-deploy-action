@@ -1,12 +1,18 @@
 name: Build and Deploy
 
 on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: '0 3 * * *'
-
+  # Remove push trigger to disable automatic runs
+  # push:
+  #   branches:
+  #     - main
+  
+  # Keep scheduled runs if needed, or remove this too
+  # schedule:
+  #   - cron: '0 3 * * *'
+  
+  # Add workflow_dispatch to enable manual triggering
+  workflow_dispatch:
+  
   repository_dispatch:
     types: [trigger-workflow]
 
@@ -50,6 +56,7 @@ jobs:
           token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
           fetch-depth: 0
           lfs: true
+          ref: c3e27da91b0753e09f67adbd8536b5dcae39e399  # Specify the exact commit
 
       - name: Use content from prev job and compare
         id: use_content
@@ -86,6 +93,7 @@ jobs:
           token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
           fetch-depth: 0
           lfs: true
+          ref: c3e27da91b0753e09f67adbd8536b5dcae39e399  # Specify the exact commit
 
       - name: Checkout LFS objects
         run: git lfs checkout
