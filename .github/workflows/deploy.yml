@@ -56,7 +56,6 @@ jobs:
           token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
           fetch-depth: 0
           lfs: true
-          ref: c3e27da91b0753e09f67adbd8536b5dcae39e399  # Specify the exact commit
 
       - name: Use content from prev job and compare
         id: use_content
@@ -93,7 +92,6 @@ jobs:
           token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
           fetch-depth: 0
           lfs: true
-          ref: c3e27da91b0753e09f67adbd8536b5dcae39e399  # Specify the exact commit
 
       - name: Checkout LFS objects
         run: git lfs checkout
