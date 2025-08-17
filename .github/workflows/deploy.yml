@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-  # schedule:
-  #   - cron: '0 3 * * *'
-
+  workflow_dispatch:   # ✅ 手动运行支持
   repository_dispatch:
     types: [trigger-workflow]
 
